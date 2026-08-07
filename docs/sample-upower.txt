@@ -1,0 +1,140 @@
+Device: /org/freedesktop/UPower/devices/line_power_AC0
+  native-path:          AC0
+  power supply:         yes
+  updated:              Sat 08 Aug 2026 12:41:02 AM CEST (14 seconds ago)
+  has history:          no
+  has statistics:       no
+  line-power
+    warning-level:       none
+    online:              yes
+    icon-name:          'ac-adapter-symbolic'
+
+Device: /org/freedesktop/UPower/devices/battery_BAT0
+  native-path:          BAT0
+  vendor:               ASUSTeK
+  model:                ASUS Battery
+  power supply:         yes
+  updated:              Sat 08 Aug 2026 12:41:02 AM CEST (14 seconds ago)
+  has history:          yes
+  has statistics:       yes
+  battery
+    present:             yes
+    rechargeable:        yes
+    state:               discharging
+    warning-level:       none
+    energy:              31.794 Wh
+    energy-full:         31.794 Wh
+    energy-rate:         0.13 W
+    time to empty:       10.2 days
+    percentage:          100%
+    capacity:            63.5855%
+    technology:          lithium-ion
+    icon-name:          'battery-full-symbolic'
+  History (rate):
+    1786139432	0.130	discharging
+    1786139402	0.059	discharging
+
+Device: /org/freedesktop/UPower/devices/mouse_dev_DC_CD_6A_5F_E1_D4
+  native-path:          /sys/devices/virtual/misc/uhid/0005:046D:B020.0007
+  vendor:               Logitech
+  model:                MX Vertical
+  serial:               dc:cd:6a:5f:e1:d4
+  power supply:         no
+  updated:              Sat 08 Aug 2026 12:40:11 AM CEST (65 seconds ago)
+  has history:          yes
+  has statistics:       no
+  mouse
+    present:             yes
+    rechargeable:        yes
+    state:               discharging
+    warning-level:       none
+    percentage:          15%
+    icon-name:          'battery-low-symbolic'
+  History (rate):
+    1786139102	0.000	discharging
+
+Device: /org/freedesktop/UPower/devices/keyboard_dev_D6_E8_1A_61_37_7F
+  native-path:          /sys/devices/virtual/misc/uhid/0005:046D:B369.0006
+  vendor:               Logitech
+  model:                Logitech MX Keys Mini
+  serial:               d6:e8:1a:61:37:7f
+  power supply:         no
+  updated:              Sat 08 Aug 2026 12:40:11 AM CEST (65 seconds ago)
+  has history:          yes
+  has statistics:       no
+  keyboard
+    present:             yes
+    rechargeable:        yes
+    state:               charging
+    warning-level:       none
+    percentage:          62%
+    icon-name:          'battery-good-charging-symbolic'
+
+Device: /org/freedesktop/UPower/devices/headset_dev_24_95_2F_AA_F1_91
+  native-path:          /sys/devices/virtual/bluetooth/hci0/hci0:256
+  model:                Pixel Buds A-Series
+  serial:               24:95:2f:aa:f1:91
+  power supply:         no
+  updated:              Sat 08 Aug 2026 12:39:58 AM CEST (78 seconds ago)
+  has history:          yes
+  has statistics:       no
+  headset
+    present:             yes
+    rechargeable:        yes
+    state:               discharging
+    warning-level:       none
+    percentage:          80%
+    icon-name:          'battery-full-symbolic'
+
+Device: /org/freedesktop/UPower/devices/gaming_input_dev_00_1B_DC_0F_44_C2
+  native-path:          /sys/devices/virtual/misc/uhid/0005:054C:0CE6.0009
+  vendor:               Sony
+  model:                DualSense Wireless Controller
+  serial:               00:1b:dc:0f:44:c2
+  power supply:         no
+  updated:              Sat 08 Aug 2026 12:38:40 AM CEST (156 seconds ago)
+  has history:          no
+  has statistics:       no
+  gaming-input
+    present:             yes
+    rechargeable:        yes
+    state:               discharging
+    warning-level:       none
+    percentage:          45%
+    icon-name:          'battery-good-symbolic'
+
+Device: /org/freedesktop/UPower/devices/mouse_dev_11_22_33_44_55_66
+  native-path:          /sys/devices/virtual/misc/uhid/0005:046D:B034.0011
+  vendor:               Logitech
+  model:                MX Anywhere 3
+  serial:               11:22:33:44:55:66
+  power supply:         no
+  updated:              Sat 08 Aug 2026 12:20:02 AM CEST (1234 seconds ago)
+  has history:          no
+  has statistics:       no
+  mouse
+    present:             no
+    rechargeable:        yes
+    state:               unknown
+    warning-level:       none
+    percentage:          0%
+    icon-name:          'battery-missing-symbolic'
+
+Device: /org/freedesktop/UPower/devices/DisplayDevice
+  power supply:         yes
+  updated:              Sat 08 Aug 2026 12:41:02 AM CEST (14 seconds ago)
+  has history:          no
+  has statistics:       no
+  battery
+    present:             yes
+    state:               discharging
+    warning-level:       none
+    percentage:          100%
+    icon-name:          'battery-full-symbolic'
+
+Daemon:
+  daemon-version:  1.90.9
+  on-battery:      yes
+  lid-is-closed:   no
+  lid-is-present:  yes
+  critical-action: HybridSleep

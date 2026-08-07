@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "id": "tpatzelt.peripherals",
+  "name": "Peripheral batteries",
+  "version": "1.0.0",
+  "author": "Tim Patzelt",
+  "license": "MIT",
+  "homepage": "https://github.com/tpatzelt/omarchy-peripherals",
+  "description": "Battery levels for wireless mice, keyboards, headsets and controllers in the Omarchy bar, read from UPower.",
+  "kinds": [
+    "bar-widget"
+  ],
+  "entryPoints": {
+    "barWidget": "Peripherals.qml"
+  },
+  "barWidget": {
+    "displayName": "Peripheral batteries",
+    "description": "How much charge is left in your mouse, keyboard, headset or controller — with a panel and a low-battery warning.",
+    "category": "System",
+    "aliases": ["peripherals", "battery", "mouse", "keyboard", "headset", "bluetooth", "upower"],
+    "allowMultiple": false,
+    "defaultSection": "right",
+    "defaults": {
+      "interval": 120,
+      "lowPercent": 20,
+      "includeInternal": false,
+      "exclude": [],
+      "showAll": true,
+      "maxChips": 3,
+      "chipBelowPercent": 100,
+      "showIcons": true,
+      "notify": true,
+      "onRightClick": ""
+    },
+    "schema": [
+      {
+        "key": "interval",
+        "type": "integer",
+        "label": "Refresh interval (seconds)",
+        "min": 5,
+        "max": 3600,
+        "step": 30,
+        "defaultValue": 120,
+        "description": "Peripheral batteries report in whole percent and drain over weeks; UPower itself only refreshes most of them every couple of minutes."
+      },
+      {
+        "key": "lowPercent",
+        "type": "integer",
+        "label": "Low battery threshold (%)",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "defaultValue": 20,
+        "description": "At or below this a device turns the theme's urgent colour and, once, sends a notification."
+      },
+      {
+        "key": "showAll",
+        "type": "boolean",
+        "label": "Show every device",
+        "defaultValue": true,
+        "description": "Off shows only the emptiest one, which keeps the bar to a single chip."
+      },
+      {
+        "key": "maxChips",
+        "type": "integer",
+        "label": "Maximum chips on the bar",
+        "min": 1,
+        "max": 8,
+        "step": 1,
+        "defaultValue": 3
+      },
+      {
+        "key": "chipBelowPercent",
+        "type": "integer",
+        "label": "Only show devices below (%)",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "defaultValue": 100,
+        "description": "100 shows everything. Lower it to keep full devices off the bar until they start running down. Charging devices are always shown."
+      },
+      {
+        "key": "notify",
+        "type": "boolean",
+        "label": "Notify on low battery",
+        "defaultValue": true,
+        "description": "One desktop notification per device as it crosses the threshold, not one per refresh."
+      },
+      {
+        "key": "showIcons",
+        "type": "boolean",
+        "label": "Show icons",
+        "defaultValue": true,
+        "description": "Turn off for a text-only readout if your font lacks the Nerd Font glyphs."
+      },
+      {
+        "key": "includeInternal",
+        "type": "boolean",
+        "label": "Include the machine's own battery",
+        "defaultValue": false,
+        "description": "Off by default — Omarchy already has a battery indicator for that."
+      },
+      {
+        "key": "exclude",
+        "type": "string",
+        "label": "Hide these device kinds",
+        "defaultValue": "",
+        "description": "JSON array of UPower kinds such as [\"phone\", \"media-player\"]."
+      },
+      {
+        "key": "onRightClick",
+        "type": "string",
+        "label": "Right-click command",
+        "defaultValue": "",
+        "description": "Leave empty to have right-click refresh instead of running a command."
+      }
+    ]
+  }
+}
