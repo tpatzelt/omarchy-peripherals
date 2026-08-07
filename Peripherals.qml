@@ -35,6 +35,12 @@ Panel {
 
   readonly property string rightClickCommand: setting("onRightClick", "")
 
+  // Advanced: the command whose output gets parsed. Point it at a captured
+  // dump (["cat", "/path/to/upower.txt"]) to see how the widget will look with
+  // devices you don't currently have, or at a wrapper on a system where
+  // UPower lives somewhere unusual.
+  readonly property var dumpCommand: setting("dumpCommand", ["upower", "--dump"])
+
   // Nerd Font glyphs per UPower device kind. Written as escapes rather than
   // literal astral-plane characters so the file survives any editor or
   // transport that mangles them. Override any of them from shell.json.
@@ -46,12 +52,17 @@ Panel {
   readonly property string penIcon: setting("penIcon", "\uf040")
   readonly property string genericIcon: setting("genericIcon", "\uf240")
 
+  // Panel (qs.Ui) is a plain Item \u2014 unlike BarWidget it does not lift the
+  // host's geometry, so a widget built on it has to read `vertical` itself.
+  readonly property bool vertical: bar ? bar.vertical : false
+
   PeripheralsCore {
     id: gear
     intervalMs: Math.max(5000, Math.round(root.intervalSec * 1000))
     lowPercent: root.lowPercent
     includeInternal: root.includeInternal
     excludeKinds: root.excludeKinds
+    dumpCommand: root.dumpCommand
 
     onWentLow: function (name, percent) {
       if (!root.notify) return

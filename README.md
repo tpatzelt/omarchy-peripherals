@@ -145,7 +145,21 @@ Changes there hot-reload; you do not need to restart the shell.
 | `includeInternal` | `false` | Include the machine's own battery and AC adapter |
 | `exclude` | `[]` | UPower kinds to hide, e.g. `["phone", "media-player"]` |
 | `onRightClick` | `""` | Empty means right-click refreshes |
+| `dumpCommand` | `["upower", "--dump"]` | Advanced. Point it at `["cat", "…"]` to preview devices you don't have |
 | `mouseIcon` `keyboardIcon` `headsetIcon` `gamepadIcon` `phoneIcon` `penIcon` `genericIcon` | Nerd Font glyphs | Override any of them |
+
+### Seeing it without the hardware
+
+The widget itself accepts `dumpCommand`, so you can point the whole bar segment
+at the sample fixture and see exactly how a mouse, keyboard, headset and
+controller would look:
+
+```json
+{
+  "id": "tpatzelt.peripherals",
+  "dumpCommand": ["cat", "~/.config/omarchy/plugins/tpatzelt.peripherals/docs/sample-upower.txt"]
+}
+```
 
 ### A quieter bar
 

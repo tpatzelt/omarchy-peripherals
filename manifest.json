@@ -30,7 +30,8 @@
       "chipBelowPercent": 100,
       "showIcons": true,
       "notify": true,
-      "onRightClick": ""
+      "onRightClick": "",
+      "dumpCommand": ["upower", "--dump"]
     },
     "schema": [
       {
@@ -113,6 +114,13 @@
         "label": "Right-click command",
         "defaultValue": "",
         "description": "Leave empty to have right-click refresh instead of running a command."
+      },
+      {
+        "key": "dumpCommand",
+        "type": "string",
+        "label": "Dump command (advanced)",
+        "defaultValue": "",
+        "description": "JSON array, default [\"upower\", \"--dump\"]. Point it at [\"cat\", \"/path/to/dump.txt\"] to preview devices you don't have."
       }
     ]
   }
