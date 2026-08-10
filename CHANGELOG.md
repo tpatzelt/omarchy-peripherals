@@ -3,6 +3,13 @@
 All notable changes to this project are documented here.
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.1] - 2026-08-10
+
+- Apply a settings change as soon as it arrives instead of waiting for the next
+  poll. The bar injects a widget's settings while its first poll is still in
+  flight, and that request was being dropped, so an overridden `dumpCommand`
+  did nothing for up to two minutes after the shell started.
+
 ## [1.0.0] - 2026-08-08
 
 Initial release.
@@ -22,4 +29,5 @@ Initial release.
 - `PeripheralsCore.qml` usable standalone in any Quickshell config, with a
   runnable example under `examples/standalone`
 
+[1.0.1]: https://github.com/tpatzelt/omarchy-peripherals/releases/tag/v1.0.1
 [1.0.0]: https://github.com/tpatzelt/omarchy-peripherals/releases/tag/v1.0.0

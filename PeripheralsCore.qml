@@ -66,11 +66,28 @@ QtObject {
 
   onExcludeKindsChanged: refresh()
   onIncludeInternalChanged: refresh()
+  // The bar injects settings a moment after the widget is built, so the first
+  // poll has already gone out against the default command by the time an
+  // overridden dumpCommand arrives. Without this the override sits unused
+  // until the next tick — two minutes at the default interval.
+  //
+  // Deferred, because this handler runs before _pollProc.command has taken the
+  // new value: refreshing straight away just re-runs the old command.
+  onDumpCommandChanged: Qt.callLater(refresh)
 
   // ── Actions ─────────────────────────────────────────────────────────────
 
   function refresh() {
-    if (!_pollProc.running) _pollProc.running = true
+    // A poll already in flight was started with the previous command, so its
+    // result says nothing about the new one. Dropping the request outright
+    // would strand the widget on stale output until the next tick: the bar
+    // injects settings while that very first poll is still running. Remember
+    // it instead and re-poll as soon as the process is free.
+    if (_pollProc.running) {
+      _refreshPending = true
+      return
+    }
+    _pollProc.running = true
   }
 
   // ── Formatting ──────────────────────────────────────────────────────────
@@ -98,6 +115,8 @@ QtObject {
   // ── Internals ───────────────────────────────────────────────────────────
 
   property bool _ready: false
+  // A refresh asked for while a poll was already running; see refresh().
+  property bool _refreshPending: false
   // Devices already reported low, so wentLow() fires on the crossing rather
   // than once per poll for as long as the battery stays down.
   property var _lowSeen: ({})
@@ -247,6 +266,12 @@ QtObject {
     }
     onExited: function (exitCode) {
       if (exitCode !== 0 && !root._ready) root.lastError = "could not read UPower"
+    }
+
+    // Deferred so the command binding has settled before the queued poll runs.
+    onRunningChanged: if (!running && root._refreshPending) {
+      root._refreshPending = false
+      Qt.callLater(root.refresh)
     }
   }
 

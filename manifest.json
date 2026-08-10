@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "tpatzelt.peripherals",
   "name": "Peripheral batteries",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Tim Patzelt",
   "license": "MIT",
   "homepage": "https://github.com/tpatzelt/omarchy-peripherals",
